@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alocação e Triagem de Talentos - IA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 1. TELA DE LOGIN -->
+    <div id="loginScreen">
+        <h2 style="color: var(--accent); margin-bottom: 15px;">Acesso à Plataforma 🔑</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Insira sua API Key do Google Gemini para acessar o sistema.</p>
+        <input type="password" id="loginKey" placeholder="Cole sua API Key aqui..." required>
+        <button class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="fazerLogin()">Entrar na Plataforma</button>
+    </div>
+
+    <!-- 2. PAINEL PRINCIPAL -->
+    <div id="appScreen">
+        <div class="top-bar">
+            <div>
+                <span style="color: var(--text-muted); font-size: 0.9rem;">Sessão Ativa:</span>
+                <strong id="keyMasked" style="color: var(--accent);">****</strong>
+            </div>
+            <div>
+                <button class="btn btn-secondary" onclick="resetarDados()">🧹 Resetar Formulários</button>
+                <button class="btn btn-danger" onclick="logout()">🚪 Trocar Chave API</button>
+            </div>
+        </div>
+
+        <h1>Alocação de Talentos & Triagem com IA 🧠</h1>
+        <p class="subtitle">Análise cruzada de múltiplos currículos x múltiplas vagas com salvamento automático.</p>
+
+        <div class="grid-2">
+            <div class="section-card">
+                <h2>📋 Vagas de Emprego</h2>
+                <div id="vagasContainer"></div>
+                <button type="button" class="btn-add" onclick="addVaga()">+ Adicionar Nova Vaga</button>
+            </div>
+
+            <div class="section-card">
+                <h2>👤 Currículos dos Candidatos</h2>
+                <div id="curriculosContainer"></div>
+                <button type="button" class="btn-add" onclick="addCurriculo()">+ Adicionar Novo Currículo</button>
+            </div>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="processarAnalise()">🚀 Executar Análise com Gemini</button>
+        <p id="loading" style="text-align:center; display:none; margin-top:20px; color: var(--accent);">
+            A IA está analisando a compatibilidade dos perfis... ⏳
+        </p>
+
+        <!-- RESULTADOS E EXPORTAÇÃO -->
+        <div id="resultado"></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
